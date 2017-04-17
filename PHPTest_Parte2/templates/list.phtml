@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3 - Lista de empleados</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 50px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+            
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Employees</h1>
+        <br />
+        <form id="email_form" action="list" method="get">
+            Find by email: <input type="text" name="email" id="email">&nbsp;&nbsp;<input type="submit" value="   Find   ">
+        </form>
+        <br />
+        <br />
+        <?php if (isset($employees)) : ?>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Details</th>
+            </tr>
+            <?php foreach ($employees as $employee): ?>
+            <tr>
+                <td><?= htmlspecialchars($employee['name']); ?></td>
+                <td><?= htmlspecialchars($employee['email']); ?></td>
+                <td><?= htmlspecialchars($employee['position']); ?></td>
+                <td><?= htmlspecialchars($employee['salary']); ?></td>
+                <td>
+                    <a href="details/<?=$employee['id']?>">View detail</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <br />
+        <br />
+        <a href="list">View all</a>
+        <?php else: ?>
+            <p>No existen datos.
+        <?php endif; ?>
+    </body>
+</html>

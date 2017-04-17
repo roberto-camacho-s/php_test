@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3 - Detalle de empleado</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 50px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+            
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Employee</h1>
+        <br />
+        <?php if (isset($employee)) : ?>
+        <table>
+            <tr>
+                <th>Name</th><td><?= htmlspecialchars($employee['name']); ?></td>
+            </tr>
+            <tr>
+                <th>Email</th><td><?= htmlspecialchars($employee['email']); ?></td>
+            </tr>
+            <tr>
+                <th>Phone</th><td><?= htmlspecialchars($employee['phone']); ?></td>
+            </tr>
+            <tr>
+                <th>Address</th><td><?= htmlspecialchars($employee['address']); ?></td>
+            </tr>
+            <tr>
+                <th>Position</th><td><?= htmlspecialchars($employee['position']); ?></td>
+            </tr>
+            <tr>
+                <th>Salary</th><td><?= htmlspecialchars($employee['salary']); ?></td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td>
+                    <ul>
+                        <?php foreach ($employee['skills'] as $skill): ?>
+                            <li><?= htmlspecialchars($skill['skill']); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="../list">Return</a>
+                </td>
+            </tr>
+        </table>
+        <?php else: ?>
+            <p>No existen datos.
+        <?php endif; ?>
+    </body>
+</html>

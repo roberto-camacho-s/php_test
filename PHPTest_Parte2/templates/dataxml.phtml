@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <?php if (isset($employees)) : ?>
+        <?php foreach ($employees as $employee): ?>
+    <employee>
+        <id><?= htmlspecialchars($employee['id']); ?></id>
+        <name><?= htmlspecialchars($employee['name']); ?></name>
+        <email><?= htmlspecialchars($employee['email']); ?></email>
+        <phone><?= htmlspecialchars($employee['phone']); ?></phone>
+        <address><?= htmlspecialchars($employee['address']); ?></address>
+        <position><?= htmlspecialchars($employee['position']); ?></position>
+        <salary><?= htmlspecialchars($employee['salary']); ?></salary>
+        <skills>
+            <?php foreach ($employee['skills'] as $skill): ?>
+                <skill><?= htmlspecialchars($skill['skill']); ?></skill>
+            <?php endforeach; ?>
+        </skills>
+    </employee>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</employees>
